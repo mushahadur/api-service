@@ -10,8 +10,6 @@
 - [Technical Requirements](#technology)
 - [Installing  Project](#installing)
 
-
-<br>
 <br>
 
 <hr>
@@ -25,8 +23,6 @@ This project develop product management API Service with CRUD for products and c
 
 1. Backend:
    - Laravel.
-
-
 
 <br>
 <hr>

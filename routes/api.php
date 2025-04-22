@@ -23,19 +23,3 @@ Route::post('/products', [ProductController::class, 'create']);      // Create c
 Route::put('/products/{id}', [ProductController::class, 'update']); // Update category
 Route::delete('/products/{id}', [ProductController::class, 'destroy']); // Delete category
 
-
-// Group for CategoryController
-// Route::controller(CategoryController::class)->prefix('categories')->group(function () {
-//     Route::get('/', 'index');        // List categories
-//     Route::post('/', 'store');       // Create category
-//     Route::put('/{id}', 'update');   // Update category
-//     Route::delete('/{id}', 'destroy'); // Delete category
-// });
-
-//  // Group for ProductController
-//  Route::controller(ProductController::class)->prefix('products')->group(function () {
-//     Route::get('/', 'index');        // List products
-//     Route::post('/', 'store');       // Create product
-//     Route::put('/{id}', 'update');   // Update product
-//     Route::delete('/{id}', 'destroy'); // Delete product
-// });
