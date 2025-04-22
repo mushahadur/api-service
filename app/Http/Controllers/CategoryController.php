@@ -9,7 +9,11 @@ use App\Http\Requests\CategoryRequest;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::get();
+        $categories = Category::orderBy('created_at', 'desc')
+        ->limit(10)
+        ->get();
+
+
         return response()->json([
             'success' => true,
             'message' => 'Categories retrieved successfully.',
@@ -29,7 +33,7 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id) {
-        $category = Category::findOrFail($id);
+        $category = Category::find($id);
 
         if (!$category) {
             return response()->json([

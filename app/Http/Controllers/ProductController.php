@@ -9,11 +9,14 @@ use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
     public function index() {
-        $categories = Product::get();
+        $products = Product::orderBy('created_at', 'desc')
+                   ->limit(10)
+                   ->get();
+
         return response()->json([
             'success' => true,
             'message' => 'Product retrieved successfully.',
-            'data' => $categories
+            'data' => $products
         ], 200); // 200 OK
     }
 
@@ -25,19 +28,19 @@ class ProductController extends Controller
                 'success' => true,
                 'message' => 'Product created successfully.',
                 'data' => $product,
-            ], 201); // HTTP 201 Created
+            ], 201); 
     }
 
     public function update(Request $request, $id) {
-        $product = Product::findOrFail($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json([
                 'success' => false,
                 'message' => 'Product not found.',
-            ], 404); // Not Found
+            ], 404); 
         }
-        
+
        $updateData=  $product->update($request->all());
 
         return response()->json([
