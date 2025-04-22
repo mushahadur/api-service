@@ -25,7 +25,7 @@ This project develop product management API Service with CRUD for products and c
 
 1. Backend:
    - Laravel.
-   - Use a hardcoded array of products (no database needed).
+
 
 
 <br>
@@ -37,5 +37,4 @@ It is php 7.1 version
 - composer install
 - php artisan key:generate
 - Setup .env file 
-
 - php artisan serve

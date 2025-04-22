@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+// use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +18,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/categories', [CategoryController::class, 'index']);
+// Group for CategoryController
+// Route::controller(CategoryController::class)->prefix('categories')->group(function () {
+//     Route::get('/', 'index');        // List categories
+//     Route::post('/', 'store');       // Create category
+//     Route::put('/{id}', 'update');   // Update category
+//     Route::delete('/{id}', 'destroy'); // Delete category
+// });
