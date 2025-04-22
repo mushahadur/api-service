@@ -18,22 +18,52 @@ class CategoryController extends Controller
     }
 
     public function create(CategoryRequest $request) {
+
         $category = Category::create($request->all());
+
             return response()->json([
                 'success' => true,
                 'message' => 'Category created successfully.',
                 'data' => $category,
-            ], 201); // HTTP 201 Created
+            ], 201); 
     }
 
     public function update(Request $request, $id) {
         $category = Category::findOrFail($id);
-        $category->update($request->all());
-        return $category;
+
+        if (!$category) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Category not found.',
+            ], 404); // Not Found
+        }
+
+       $updateData=  $category->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Category update successfully.',
+            'data' => $updateData,
+        ], 200); 
     }
 
-    public function destroy($id) {
-        Category::destroy($id);
-        return response()->json(['message' => 'Deleted']);
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Category not found.',
+            ], 404); // Not Found
+        }
+
+        $category->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Category deleted successfully.',
+        ], 200); // OK
     }
+
 }
